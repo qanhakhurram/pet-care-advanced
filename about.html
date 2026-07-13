@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>About Us</title>
+
+<style>
+body{
+  font-family:Arial;
+  background:#0f172a;
+  color:white;
+  padding:40px;
+  text-align:center;
+}
+
+/* ABOUT BOX */
+.box{
+  background:#1e293b;
+  padding:30px;
+  border-radius:15px;
+  width:70%;
+  margin:auto;
+}
+
+/* FEEDBACK SECTION */
+.feedback-section{
+  margin-top:50px;
+}
+
+.feedback-container{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.feedback{
+  background:#1e293b;
+  padding:20px;
+  border-radius:12px;
+  width:250px;
+}
+
+.feedback p{
+  color:#94a3b8;
+  font-size:14px;
+}
+
+.feedback h4{
+  margin-top:10px;
+  color:#22c55e;
+}
+
+/* FORM */
+.form-box{
+  margin-top:40px;
+}
+
+input, textarea{
+  width:30%;
+  padding:10px;
+  margin:10px 0;
+  border-radius:8px;
+  border:none;
+}
+
+button{
+  padding:10px 15px;
+  background:#22c55e;
+  border:none;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
+}
+.toast{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#22c55e;
+  color:white;
+  padding:12px 18px;
+  border-radius:10px;
+  font-weight:bold;
+  animation:fadeIn 0.3s;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>About Us</h1>
+
+<div class="box">
+<p>
+We are a trusted pet care platform providing grooming, boarding, and walking services.
+Our mission is to give your pets love, safety, and comfort when you are away.
+</p>
+
+<p>🐾 "We treat your pets like family"</p>
+</div>
+
+<!-- 🔥 FEEDBACK DISPLAY -->
+<div class="feedback-section">
+
+<h2>💬 What Our Customers Say</h2>
+
+<div class="feedback-container">
+
+  <div class="feedback">
+    <p>"Amazing service! My cat was so happy and clean."</p>
+    <h4>- Sara</h4>
+  </div>
+
+  <div class="feedback">
+    <p>"Very professional and caring staff. Highly recommended!"</p>
+    <h4>- Ali</h4>
+  </div>
+
+</div>
+
+</div>
+
+<!-- 🔥 FEEDBACK FORM -->
+<div class="form-box">
+
+<h2>Give Your Feedback</h2>
+
+<input type="text" placeholder="Your Name"><br>
+<textarea placeholder="Write your feedback..."></textarea><br>
+
+<button onclick="showToast('Thanks for your feedback!')">Submit</button>
+
+</div>
+<script>
+function showToast(msg){
+  let t = document.createElement("div");
+  t.className = "toast";
+  t.innerText = msg;
+
+  document.body.appendChild(t);
+
+  setTimeout(()=>{
+    t.remove();
+  },4000); // ✅ 4 sec
+}
+</script>
+
+</body>
+</html>
