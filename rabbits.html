@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SERVICE NAME</title>
+
+<style>
+body{
+  font-family:Arial;
+  background:#0f172a;
+  color:white;
+  text-align:center;
+  padding:40px;
+}
+
+.box{
+  background:#1e293b;
+  padding:30px;
+  border-radius:15px;
+  width:60%;
+  margin:auto;
+}
+
+button, a{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 18px;
+  background:#22c55e;
+  color:white;
+  text-decoration:none;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+button:hover, a:hover{
+  background:#4ade80;
+  transform:scale(1.05);
+}
+
+.toast-box{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#1e293b;
+  padding:15px;
+  border-radius:12px;
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🐰 Rabbit Grooming</h1>
+
+<div id="toast" class="toast-box">
+  ⚠ Please login first
+</div>
+
+<div class="box">
+<p>Fur brushing, nail trimming, ear cleaning, and hygiene care to prevent infections and maintain comfort.</p>
+
+<h3>💰 Price: 7000 Rs </h3>
+
+<button onclick="goBooking()">Book Now</button>
+</div>
+
+<a href="index.html">Back to Home</a>
+
+<script>
+function checkLogin(){
+  let user = localStorage.getItem("user");
+
+  if(user){
+    window.location.href = "booking.html";
+  }else{
+    document.getElementById("toast").style.display="block";
+    setTimeout(()=>{document.getElementById("toast").style.display="none";},2000);
+  }
+}
+function goBooking(){
+  let user = localStorage.getItem("user");
+
+  if(user){
+    localStorage.setItem("selectedService", document.title);
+    window.location.href = "booking.html";
+  }else{
+    document.getElementById("toast").style.display="block";
+    setTimeout(()=>{document.getElementById("toast").style.display="none";},2000);
+  }
+}
+</script>
+
+</body>
+</html>
