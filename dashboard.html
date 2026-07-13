@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+
+<style>
+body{
+  font-family:Arial;
+  background:#0f172a;
+  color:white;
+  text-align:center;
+  padding:40px;
+}
+
+.box{
+  background:#1e293b;
+  padding:30px;
+  width:40%;
+  margin:auto;
+  border-radius:15px;
+}
+
+button{
+  padding:10px 15px;
+  background:#22c55e;
+  border:none;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
+  margin:10px;
+  font-weight:bold;
+}
+
+button:hover{
+  background:#16a34a;
+  transform:scale(1.05);
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🎉 Welcome to Dashboard</h1>
+
+<div class="box">
+  <p id="userEmail"></p>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<script>
+
+// 🔥 CHECK LOGIN
+let user = localStorage.getItem("user");
+
+if(!user){
+  window.location.href = "login.html";
+}else{
+  document.getElementById("userEmail").innerText = "Logged in as: " + user;
+}
+
+// 🔥 GO HOME
+function goHome(){
+  window.location.href = "index.html";
+}
+
+// 🔥 LOGOUT
+function logout(){
+  localStorage.removeItem("user");
+  window.location.href = "login.html";
+}
+
+</script>
+
+</body>
+</html>
