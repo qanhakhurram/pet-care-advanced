@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Book Service</title>
+
+<style>
+body{
+  font-family:Arial;
+  background:#0f172a;
+  color:white;
+  padding:40px;
+}
+
+.container{
+  max-width:500px;
+  margin:auto;
+  background:#1e293b;
+  padding:60px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+h1{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+input, select{
+  width:80%;
+  padding:15px;
+  margin:12px 20px;
+  border:none;
+  border-radius:8px;
+  outline:none;
+}
+.toast{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#22c55e;
+  padding:12px 18px;
+  border-radius:10px;
+  color:white;
+}
+
+.back{
+  display:block;
+  text-align:center;
+  margin-top:15px;
+  color:#22c55e;
+  text-decoration:none;
+}
+button, a{
+  display:;
+  margin-top:40px;
+  padding:10px 10px;
+  background:#22c55e;
+  color:white;
+  text-decoration:none;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+button:hover, a:hover{
+  background:#4ade80;
+  transform:scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📅 Book Your Service</h1>
+
+<form id="form">
+
+<input type="text" id="name" placeholder="Your Name" required>
+
+<input type="text" id="pet" placeholder="Pet Name" required>
+
+<input type="text" id="service" readonly>
+
+<input type="date" id="date" required>
+
+<select id="time">
+  <option>Select Time Slot</option>
+  <option>Morning (9am - 12pm)</option>
+  <option>Afternoon (12pm - 4pm)</option>
+  <option>Evening (4pm - 8pm)</option>
+</select>
+
+<input type="text" id="address" placeholder="Your Address" required>
+
+<button type="submit">Confirm Booking</button>
+
+</form>
+
+</div>
+<a href="index.html">Back to Home</a>
+<script>
+
+// AUTO FILL SERVICE NAME
+document.getElementById("service").value =
+  localStorage.getItem("selectedService") || "";
+
+// SUBMIT
+document.getElementById("form").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  let booking = {
+    name: document.getElementById("name").value,
+    pet: document.getElementById("pet").value,
+    service: document.getElementById("service").value,
+    date: document.getElementById("date").value,
+    time: document.getElementById("time").value,
+    address: document.getElementById("address").value
+  };
+
+  let data = JSON.parse(localStorage.getItem("bookings")) || [];
+  data.push(booking);
+  localStorage.setItem("bookings", JSON.stringify(data));
+
+  showToast("✅ Booking Confirmed!");
+
+  setTimeout(()=>{
+    window.location.href = "dashboard.html";
+  },2000);
+
+  this.reset();
+});
+
+// TOAST
+function showToast(msg){
+  let t = document.createElement("div");
+  t.className = "toast";
+  t.innerText = msg;
+
+  document.body.appendChild(t);
+
+  setTimeout(()=>t.remove(),2000);
+}
+
+</script>
+
+</body>
+</html>

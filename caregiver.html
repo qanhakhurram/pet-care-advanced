@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Caregiver Dashboard</title>
+
+<style>
+body{
+  font-family:Arial;
+  background:#0f172a;
+  color:white;
+  text-align:center;
+  padding:40px;
+}
+
+h1{
+  margin-bottom:30px;
+}
+
+/* BOX */
+.box{
+  background:#1e293b;
+  padding:20px;
+  margin:15px auto;
+  width:60%;
+  border-radius:12px;
+}
+
+/* BUTTON */
+button{
+  padding:8px 15px;
+  background:#22c55e;
+  border:none;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+button:hover{
+  background:#4ade80;
+}
+
+/* STATUS */
+.status{
+  margin-top:10px;
+  color:#22c55e;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>👨‍🎓 Caregiver Dashboard</h1>
+
+<!-- PROFILE -->
+<div class="box">
+  <h3>Your Profile</h3>
+  <p>Name: Student Caregiver</p>
+  <p>Status: <span id="status">Available</span></p>
+  <button onclick="toggleStatus()">Toggle Status</button>
+</div>
+
+<!-- JOBS -->
+<div class="box">
+  <h3>Available Jobs</h3>
+
+  <p>🐶 Dog Grooming - Rs.800</p>
+  <button onclick="acceptJob()">Accept Job</button>
+
+  <p>🐱 Cat Boarding - Rs.500</p>
+  <button onclick="acceptJob()">Accept Job</button>
+</div>
+
+<!-- EARNINGS -->
+<div class="box">
+  <h3>Your Earnings</h3>
+  <p id="earn">Rs. 0</p>
+</div>
+
+<script>
+
+let earnings = 0;
+
+function acceptJob(){
+  earnings += 500;
+  document.getElementById("earn").innerText = "Rs. " + earnings;
+  alert("Job Accepted ✅");
+}
+
+function toggleStatus(){
+  let s = document.getElementById("status");
+
+  if(s.innerText === "Available"){
+    s.innerText = "Busy";
+    s.style.color = "red";
+  }else{
+    s.innerText = "Available";
+    s.style.color = "#22c55e";
+  }
+}
+
+</script>
+<a href="index.html">Back to Home</a>
+</body>
+</html>
